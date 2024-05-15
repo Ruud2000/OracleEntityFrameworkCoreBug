@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MyDbContext8_23_40>((sp, options) =>
 {
-    options.UseOracle("User Id=MY_USER;Password=MY_USER;Data Source=localhost:1521/xe;");
+    options.UseOracle("User Id=MY_USER;Password=MY_USER;Data Source=localhost:1521/xe;", b =>
+        b.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion21));
     options.EnableDetailedErrors(true);
 });
 
